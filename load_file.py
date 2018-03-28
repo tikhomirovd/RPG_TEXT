@@ -17,6 +17,7 @@ def load_file() -> List[Hero]:
             for line in f:
                 race_stats = line.split()
                 heroes.append(Hero(*race_stats))
+            heroes.append(name_file)
         return heroes
     else:
         print("No file with this name")

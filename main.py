@@ -21,7 +21,11 @@ def start_game():
         return heroes, name_file
     if check_game == '2':
         heroes = load_file()
-        return heroes
+        name_file = heroes[-1]
+        heroes.remove(name_file)
+        print(heroes)
+        print(name_file)
+        return heroes, name_file
 
     print("No option with this answer")
     return start_game()
@@ -31,3 +35,4 @@ if __name__ == "__main__":
     heroes, name_file = start_game()
     while True:
         heroes = save(name_file, heroes)
+        print("The game was saved")
