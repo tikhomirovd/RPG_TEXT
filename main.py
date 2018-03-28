@@ -1,9 +1,3 @@
-from hero import Hero
+import create_hero
 
-Dima = Hero(10, 10, 10, 10, 10, 10)
-
-print(Dima.health)
-print(Dima.analyse_enemy())
-print(Dima.chance_block())
-
-
+heroes = create_hero.main()
