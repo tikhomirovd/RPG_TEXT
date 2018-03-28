@@ -1,5 +1,6 @@
 from hero import Hero
 from check_number import check_int
+from typing import List
 
 
 def read_races(name_txt_stats):
@@ -29,7 +30,7 @@ def choose_race(heroes, races, name):
         return choose_race(heroes, races, name)
 
 
-def main() -> list:
+def main() -> List[Hero]:
 
     name_txt_stats = 'races_stats.txt'
     text_player = 'Введите количество игроков'
