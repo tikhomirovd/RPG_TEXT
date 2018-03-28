@@ -1,12 +1,16 @@
 class Hero:
-    def __init__(self, health, agility, strength,
-                 intelligence, wisdom, charisma):
+    def __init__(self, name, race, health, agility, strength,
+                 intelligence, wisdom, charisma, lvl, xp):
+        self.name = name
+        self.race = race
         self.health = health
         self.agility = agility
         self.strength = strength
         self.intelligence = intelligence
         self.wisdom = wisdom
         self.charisma = charisma
+        self.lvl = lvl
+        self.xp = xp
 
     def chance_miss(self):
         rate_agility = self.agility * 0.05
