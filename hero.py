@@ -105,7 +105,6 @@ class Hero:
                         + sp + str(self.wisdom) + sp + \
                         str(self.charisma) + sp + str(self.hpregen) + sp + \
                         str(self.lvl) + sp + str(self.xp)
-        print(text_to_write)
         f.write(text_to_write + '\n')
 
 
