@@ -37,9 +37,8 @@ def choose_race(heroes, races, name):
         return choose_race(heroes, races, name)
 
 
-
-def main() -> List[Hero]:
-    name_txt_stats = 'races_stats.txt'
+def create() -> List[Hero]:
+    name_txt_stats = 'races_stats.rtf'
     text_player = 'Input number of players '
 
     number_of_players = check_int(text_player)
