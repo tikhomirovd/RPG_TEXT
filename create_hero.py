@@ -15,6 +15,7 @@ def read_races():
             races.append(race_stats)
 
 
+
 for i in range(number_of_players):
 
     heroes.append(Hero(*mas))
