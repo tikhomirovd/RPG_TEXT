@@ -1,10 +1,13 @@
+from check_number import check_int
+
 text_stats = '''
+Choose what you want to improve
 1) Health
 2) Agility
 3) Strength
 4) Intelligence
 5) Wisdom
-6) Charisma'''
+6) Charisma \n'''
 
 class Hero:
     def __init__(self, name, race, health, agility, strength,
@@ -63,10 +66,44 @@ class Hero:
         rate_charisma = charisma_mod_5 * 0.3
         return 1 + rate_charisma * 0.3 / (1 + rate_charisma * 0.3)
 
+    def lvlup(self):
+        stats = ['health', 'agility', 'strength',
+                 'intelligence', 'wisdom', 'charisma']
+
+        counter_lvl = 10
+        while counter_lvl > 0:
+            print(text_stats)
+            choose_attribute = check_int('')
+            choose_attribute -= 1
+            choose_counter = check_int('Choose how much to change')
+            if 0 <= choose_attribute <= 5:
+                if counter_lvl >= choose_counter:
+                    x = getattr(self, stats[choose_attribute])
+                    setattr(self, stats[choose_attribute], x + choose_counter)
+                    counter_lvl -= choose_counter
+                else:
+                    print("You exceeded the limit")
+            else:
+                print("Attribute with such number is not present")
+
+            print("{} distribution points left".format(counter_lvl))
+
+
+
+
+
+
+
+
     def check_lvlup(self, array_of_xp):
         if self.xp > array_of_xp[self.lvl]:
             self.lvl += 1
-            print("Choose what you want to change and than choose ")
+            self.lvlup()
+
+
+
+
+
 
 
 
