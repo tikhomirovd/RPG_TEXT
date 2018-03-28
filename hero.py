@@ -1,6 +1,14 @@
+text_stats = '''
+1) Health
+2) Agility
+3) Strength
+4) Intelligence
+5) Wisdom
+6) Charisma'''
+
 class Hero:
     def __init__(self, name, race, health, agility, strength,
-                 intelligence, wisdom, charisma, lvl, xp):
+                 intelligence, wisdom, charisma, hpregen, lvl, xp):
         self.name = name
         self.race = race
         self.health = health
@@ -9,6 +17,7 @@ class Hero:
         self.intelligence = intelligence
         self.wisdom = wisdom
         self.charisma = charisma
+        self.hpregen = hpregen
         self.lvl = lvl
         self.xp = xp
 
@@ -53,4 +62,16 @@ class Hero:
         charisma_mod_5 = self.charisma // 5
         rate_charisma = charisma_mod_5 * 0.3
         return 1 + rate_charisma * 0.3 / (1 + rate_charisma * 0.3)
+
+    def check_lvlup(self, array_of_xp):
+        if self.xp > array_of_xp[self.lvl]:
+            self.lvl += 1
+            print("Choose what you want to change and than choose ")
+
+
+
+
+
+
+
 
