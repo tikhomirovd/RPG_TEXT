@@ -94,18 +94,18 @@ class Hero:
             self.lvl += 1
             self.lvlup()
 
-    def save_file(self, ):
-        name_file = input("Select a name to save") + '.txt'
+    def save_file(self, f):
         sp = ' '
-        with open(name_file, 'w') as f:
-            # Сорян за этот костыль
-            # хз как делать нормально
-            # погуглю ещё
-            text_to_write = str(self.name) + sp + str(self.race) + sp +\
-            str(self.health) + sp + str(self.agility) + sp + str(self.strength) + \
-            sp + str(self.intelligence) + sp + str(self.wisdom) + sp +\
-            str(self.charisma) + sp + str(self.hpregen) + sp + \
-            str(self.lvl) + sp + str(self.xp)
-            f.write(text_to_write)
+        # Сорян за этот костыль
+        # хз как делать нормально
+        # погуглю ещё
+        text_to_write = str(self.name) + sp + str(self.race) + sp + \
+                        str(self.health) + sp + str(self.agility) + \
+                        sp + str(self.strength) + sp + str(self.intelligence) \
+                        + sp + str(self.wisdom) + sp + \
+                        str(self.charisma) + sp + str(self.hpregen) + sp + \
+                        str(self.lvl) + sp + str(self.xp)
+        print(text_to_write)
+        f.write(text_to_write + '\n')
 
 
