@@ -6,6 +6,7 @@ def check_int(text):
         print("Ошибка. Введено не целое число. Введите ещё раз")
         return check_int(text)
 
+
 def check_float(text):
     num = input(text)
     try:
