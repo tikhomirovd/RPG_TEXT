@@ -32,7 +32,7 @@ def choose_race(heroes, races, name):
 
 def main() -> List[Hero]:
     name_txt_stats = 'races_stats.txt'
-    text_player = 'Введите количество игроков'
+    text_player = 'Input number of players '
     text_races = '''Priest
     Mag'''
     number_of_players = check_int(text_player)
