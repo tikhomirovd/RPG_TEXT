@@ -9,7 +9,10 @@ def read_races(name_txt_stats):
         for line in f:
             race_stats = line.split()
             print(race_stats)
+            for i in range(1, len(race_stats)):
+                race_stats[i] = float(race_stats[i])
             races.append(race_stats)
+
     return races
 
 
