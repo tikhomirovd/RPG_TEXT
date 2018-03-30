@@ -11,6 +11,9 @@ def load_file() -> List[Hero]:
         if files[i][-4:] == '.txt':
             print(files[i], end=' ')
             names.append(files[i])
+    if len(names) == 0:
+        print("No saved at this time")
+        return start_game()
     name_file = input("Select a file")
     if name_file in names:
         with open(name_file, 'r') as f:
@@ -22,3 +25,11 @@ def load_file() -> List[Hero]:
     else:
         print("No file with this name")
         load_file()
+
+
+def save(name_file, heroes):
+    f = open(name_file, 'w')
+    for i in range(len(heroes)):
+        heroes[i].save_file(f)
+    f.close()
+    return heroes
