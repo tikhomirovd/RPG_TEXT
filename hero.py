@@ -67,11 +67,10 @@ class Hero:
         rate_charisma = charisma_mod_5 * 0.3
         return 1 + rate_charisma * 0.3 / (1 + rate_charisma * 0.3)
 
-    def lvlup(self):
+    def change_stats(self, counter_lvl: int):
         stats = ['health', 'agility', 'strength',
                  'intelligence', 'wisdom', 'charisma']
 
-        counter_lvl = 10
         while counter_lvl > 0:
             print(text_stats)
             choose_attribute = check_int('')
@@ -79,7 +78,7 @@ class Hero:
             choose_counter = check_int('Choose how much to change')
             if 0 <= choose_attribute <= 5:
                 if counter_lvl >= choose_counter:
-                    x = getattr(self, stats[choose_attribute])
+                    x = float(getattr(self, stats[choose_attribute]))
                     setattr(self, stats[choose_attribute], x + choose_counter)
                     counter_lvl -= choose_counter
                 else:
@@ -88,11 +87,13 @@ class Hero:
                 print("Attribute with such number is not present")
 
             print("{} distribution points left".format(counter_lvl))
+        return
 
     def check_lvlup(self, array_of_xp):
-        if self.xp > array_of_xp[self.lvl]:
+        if float(self.xp) > array_of_xp[int(float(self.lvl))]:
             self.lvl += 1
-            self.lvlup()
+            print(self.name, "got a new level")
+            self.change_stats(counter_lvl=10)
 
     def save_file(self, f):
         sp = ' '
@@ -104,7 +105,7 @@ class Hero:
                         sp + str(self.strength) + sp + str(self.intelligence) \
                         + sp + str(self.wisdom) + sp + \
                         str(self.charisma) + sp + str(self.hpregen) + sp + \
-                        str(self.lvl) + sp + str(self.xp)
-        f.write(text_to_write + '\n')
+                        str(self.lvl) + sp + str(self.xp) + '\n'
+        f.write(text_to_write)
 
 
