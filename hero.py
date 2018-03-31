@@ -107,5 +107,3 @@ class Hero:
                         str(self.charisma) + sp + str(self.hpregen) + sp + \
                         str(self.lvl) + sp + str(self.xp) + '\n'
         f.write(text_to_write)
-
-
