@@ -3,7 +3,7 @@ from check_number import check_int
 from hero import Hero
 
 
-def read_races(name_txt_stats):
+def read_races(name_txt_stats) -> List[Hero]:
     races = []
     with open(name_txt_stats, 'r') as f:
         for line in f:
@@ -15,7 +15,7 @@ def read_races(name_txt_stats):
     return races
 
 
-def choose_race(heroes, races, name):
+def choose_race(heroes, races, name) -> List[Hero]:
     name_races = []
     for j in range(len(races)):
         print("{}) {}".format(j + 1, races[j][0]))
@@ -34,7 +34,7 @@ def choose_race(heroes, races, name):
         return races
     else:
         print("There is no races with this name ")
-        return choose_race(heroes, races, name)
+        choose_race(heroes, races, name)
 
 
 def create() -> List[Hero]:
