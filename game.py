@@ -28,7 +28,7 @@ def load_file() -> List[Hero]:
         return heroes
     else:
         print("No file with this name")
-        load_file()
+        return load_file()
 
 
 def save(name_file, heroes) -> List[Hero]:
@@ -60,8 +60,8 @@ def start_game() -> [List[Hero], str]:
     return start_game()
 
 
-def new_move():
-    pass
+def new_move(heroes, name_file):
+    heroes[0].agility += 2
 
 
 def menu(heroes, name_file):
@@ -76,22 +76,21 @@ Choose what you want to do:
 3) New move
 4) Change characteristics
 5) Change filname to save""")
-    return choise_menu(heroes, name_file)
-
+    choise_menu(heroes, name_file)
 
 
 def choise_menu(heroes, name_file):
     choise = input()
     if choise == '1':
-        return load_file()
+        heroes = load_file()
     if choise == '2':
-        return menu(heroes, name_file)
+        pass
     if choise == '3':
-        return new_move()
+        new_move(heroes, name_file)
     if choise == '4':
         if len(heroes) == 0:
             print("There is no player in this game ")
-            return start_game()
+            start_game()
 
         else:
             for i in range(len(heroes)):
@@ -100,14 +99,12 @@ def choise_menu(heroes, name_file):
         if 0 <= hero <= len(heroes):
             number = check_int("Choose how many total distribution points")
             heroes[hero - 1].change_stats(number)
-            return menu(heroes, name_file)
+            menu(heroes, name_file)
         else:
             print("There is no such player")
-            return choise_menu(heroes, name_file)
+            choise_menu(heroes, name_file)
     if choise == '5':
         name_file = input("Input filename ") + '.txt'
-        return menu(heroes, name_file)
+        menu(heroes, name_file)
+    
 
-
-
-    return menu(heroes, name_file)
