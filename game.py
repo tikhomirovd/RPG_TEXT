@@ -33,8 +33,16 @@ def load_file() -> List[Hero]:
 
 def save(name_file, heroes) -> List[Hero]:
     f = open(name_file, 'w')
+    table = [0] * (len(heroes))
     for i in range(len(heroes)):
-        heroes[i].save_file(f)
+        a = []
+        for j in heroes[i].__dict__.values():
+            a.append(str(j))
+        table[i] = a
+    for i in range(len(table)):
+        s = ' '.join(table[i])
+        f.write(s + '\n')
+
     f.close()
     return heroes
 
@@ -64,6 +72,23 @@ def new_move(heroes, name_file):
     heroes[0].agility += 2
 
 
+def print_table(heroes, name_file):
+    a = []
+    table = [0] * (len(heroes) + 1)
+    for i in heroes[0].__dict__.keys():
+        a.append(i)
+    table[0] = a
+    for i in range(len(heroes)):
+        a = []
+        for j in heroes[i].__dict__.values():
+            a.append(str(j))
+        table[i + 1] = a
+    for i in range(len(table)):
+        for j in range(len(heroes[0].__dict__)):
+            print('%-13s' % table[i][j], end=' ')
+        print()
+
+
 def menu(heroes, name_file):
     array_of_xp = [0, 100, 200, 300]
     save(name_file, heroes)
@@ -84,7 +109,7 @@ def choise_menu(heroes, name_file):
     if choise == '1':
         heroes = load_file()
     if choise == '2':
-        pass
+        print_table(heroes, name_file)
     if choise == '3':
         new_move(heroes, name_file)
     if choise == '4':
@@ -106,5 +131,3 @@ def choise_menu(heroes, name_file):
     if choise == '5':
         name_file = input("Input filename ") + '.txt'
         menu(heroes, name_file)
-    
-
