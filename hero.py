@@ -94,16 +94,3 @@ class Hero:
             self.lvl += 1
             print(self.name, "got a new level")
             self.change_stats(counter_lvl=10)
-
-    def save_file(self, f):
-        sp = ' '
-        # Сорян за этот костыль
-        # хз как делать нормально
-        # погуглю ещё
-        text_to_write = str(self.name) + sp + str(self.race) + sp + \
-                        str(self.health) + sp + str(self.agility) + \
-                        sp + str(self.strength) + sp + str(self.intelligence) \
-                        + sp + str(self.wisdom) + sp + \
-                        str(self.charisma) + sp + str(self.hpregen) + sp + \
-                        str(self.lvl) + sp + str(self.xp) + '\n'
-        f.write(text_to_write)
