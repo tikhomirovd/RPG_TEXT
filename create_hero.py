@@ -16,25 +16,16 @@ def read_races(name_txt_stats) -> List[Hero]:
 
 
 def choose_race(heroes, races, name) -> List[Hero]:
-    name_races = []
-    for j in range(len(races)):
-        print("{}) {}".format(j + 1, races[j][0]))
-        name_races.append(races[j][0])
-    text_races = "Choose your races "
-    race = check_int(text_races)
-    race -= 1
-    flag = False
-
-    for i in range(len(races)):
-        if name_races[race] == races[i][0]:
-            heroes.append(Hero(name, *races[i]))
-            flag = True
-
-    if flag:
-        return races
-    else:
-        print("There is no races with this name ")
-        choose_race(heroes, races, name)
+    while True:
+        print(races)
+        for j in range(len(races)):
+            print("{}) {}".format(j + 1, races[j][0]))
+        text_races = "Choose your races "
+        race = check_int(text_races)
+        race -= 1
+        if 0 <= race <= 7:
+            heroes.append(Hero(name, *races[race]))
+            return heroes
 
 
 def create() -> List[Hero]:
@@ -47,5 +38,5 @@ def create() -> List[Hero]:
 
     for i in range(number_of_players):
         name = input("Input your name ")
-        races = choose_race(heroes, races, name)
+        heroes = choose_race(heroes, races, name)
     return heroes
