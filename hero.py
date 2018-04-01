@@ -7,7 +7,9 @@ Choose what you want to improve
 3) Strength
 4) Intelligence
 5) Wisdom
-6) Charisma \n'''
+6) Charisma
+7) HPregen
+8) XP'''
 
 
 class Hero:
@@ -72,11 +74,12 @@ class Hero:
                  'intelligence', 'wisdom', 'charisma']
 
         while counter_lvl > 0:
+            print("{} distribution points left".format(counter_lvl))
             print(text_stats)
             choose_attribute = check_int('')
             choose_attribute -= 1
-            choose_counter = check_int('Choose how much to change')
-            if 0 <= choose_attribute <= 5:
+            choose_counter = check_int('Choose how much to change ')
+            if 0 <= choose_attribute <= 7:
                 if counter_lvl >= choose_counter:
                     x = float(getattr(self, stats[choose_attribute]))
                     setattr(self, stats[choose_attribute], x + choose_counter)
@@ -86,11 +89,11 @@ class Hero:
             else:
                 print("Attribute with such number is not present")
 
-            print("{} distribution points left".format(counter_lvl))
         return
 
     def check_lvlup(self, array_of_xp):
-        if float(self.xp) > array_of_xp[int(float(self.lvl))]:
+        if float(self.xp) >= array_of_xp[int(float(self.lvl))]:
             self.lvl += 1
+            self.xp += 1
             print(self.name, "got a new level")
             self.change_stats(counter_lvl=10)

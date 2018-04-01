@@ -16,12 +16,12 @@ def load_file() -> List[Hero]:
     if len(names) == 0:
         print("No saved at this time")
         return start_game()
-    name_file = input("Select a file")
+    name_file = input("Select a file\n")
     if name_file in names:
         with open(name_file, 'r') as f:
             for line in f:
                 race_stats = line.split()
-                for i in range(2, len(race_stats) - 1):
+                for i in range(2, len(race_stats)):
                     race_stats[i] = float(race_stats[i])
                 heroes.append(Hero(*race_stats))
             heroes.append(name_file)
@@ -53,7 +53,7 @@ def start_game() -> [List[Hero], str]:
     check_game = input()
     if check_game == '1':
         heroes = create()
-        name_file = input("Select a name to save ") + '.txt'
+        name_file = input("Select a name to save\n") + '.txt'
         heroes = save(name_file, heroes)
         return heroes, name_file
     if check_game == '2':
@@ -120,14 +120,14 @@ def choise_menu(heroes, name_file):
         else:
             for i in range(len(heroes)):
                 print(i + 1, heroes[i].name)
-        hero = check_int("Choose player")
+        hero = check_int("Choose player ")
         if 0 <= hero <= len(heroes):
-            number = check_int("Choose how many total distribution points")
+            number = check_int("Choose how many total distribution points ")
             heroes[hero - 1].change_stats(number)
             menu(heroes, name_file)
         else:
             print("There is no such player")
             choise_menu(heroes, name_file)
     if choise == '5':
-        name_file = input("Input filename ") + '.txt'
+        name_file = input("Input filename\n") + '.txt'
         menu(heroes, name_file)
